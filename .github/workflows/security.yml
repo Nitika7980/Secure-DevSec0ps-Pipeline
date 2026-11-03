@@ -1,3 +1,4 @@
+
 name: DevSecOps Security Pipeline
 
 on:
@@ -7,7 +8,7 @@ on:
     branches: [main]
 
 jobs:
-  security-scan:
+  bandit-scan:
     runs-on: ubuntu-latest
 
     steps:
@@ -24,6 +25,13 @@ jobs:
 
       - name: Run Bandit Security Scan
         run: bandit -r . -ll
+
+  trivy-scan:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
       - name: Build Docker Image
         run: docker build -t secure-devsecops:latest .
