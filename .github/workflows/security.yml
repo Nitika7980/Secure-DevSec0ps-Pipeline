@@ -29,7 +29,7 @@ jobs:
         run: docker build -t secure-devsecops:latest .
 
       - name: Scan Docker Image with Trivy
-        uses: aquasecurity/trivy-action@0.28.0
+        uses: aquasecurity/trivy-action@v0.36.0
         with:
           image-ref: secure-devsecops:latest
           format: table
